@@ -20,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USER")
 public class User {
 
 	@Id

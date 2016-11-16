@@ -24,6 +24,7 @@ import com.webkotecoder.springmvc.service.UserService;
 @Controller
 @RequestMapping("/")
 public class AppController {
+	private final int MAX_PAGES_ON_PAGINATION_BAR = 10;
 	private final int MAX_ROWS_PER_PAGE = 10;
 	private final String JSP_All_USERS = "allusers";
 	private final String JSP_REGISTRATION_FORM = "registration";
@@ -61,6 +62,13 @@ public class AppController {
 			pagedListHolder.setPage(page - 1);
 			model.addAttribute("userList", pagedListHolder.getPageList());
 		}
+		int start = (page / MAX_PAGES_ON_PAGINATION_BAR) * MAX_PAGES_ON_PAGINATION_BAR;
+
+		model.addAttribute("start", (start == 0) ? 1 : start);
+
+		int finish = ((start + MAX_PAGES_ON_PAGINATION_BAR) >= pagedListHolder.getPageCount())
+				? pagedListHolder.getPageCount() : start + MAX_PAGES_ON_PAGINATION_BAR-1;
+		model.addAttribute("finish", finish);
 		return JSP_All_USERS;
 	}
 
@@ -166,6 +174,15 @@ public class AppController {
 			pagedListHolder.setPage(page - 1);
 			model.addAttribute("userList", pagedListHolder.getPageList());
 		}
+		int start = (page / MAX_PAGES_ON_PAGINATION_BAR) * MAX_PAGES_ON_PAGINATION_BAR;
+
+		model.addAttribute("start", (start == 0) ? 1 : start);
+		
+		int finish = ((start + MAX_PAGES_ON_PAGINATION_BAR) >= pagedListHolder.getPageCount())
+				? pagedListHolder.getPageCount() : start + MAX_PAGES_ON_PAGINATION_BAR-1;
+		model.addAttribute("finish", finish);
+		
+
 		return JSP_All_USERS;
 	}
 

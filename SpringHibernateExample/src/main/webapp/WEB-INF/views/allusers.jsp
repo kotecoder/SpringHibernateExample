@@ -14,53 +14,10 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 <style type="text/css">
 .myrow-container {
 	margin: 20px;
-}
-
-.btn {
-	padding: 2px 2px;
-	width: 5em;
-	height: 2em;
-	background-color: #4d3a1e;
-	color: #f1f1f1;
-	border-radius: 0;
-	transition: .2s;
-}
-
-.btn:hover, .btn:focus {
-	border: 1px solid #4d3a1e;
-	background-color: #fff;
-	color: #000;
-}
-
-a.aEdit:link, a.aDelete:link {
-	color: #a83016;
-}
-
-a.aEdit:visited, a.aDelete:visited {
-	color: #947872;
-}
-
-a.aEdit:hover, a.aDelete:hover {
-	color: #60a870;
-}
-
-a.aEdit:active, a.aDelete:active {
-	color: #ded728;
-}
-
-a.aCreateUser:link {
-	color: #d1cbbc;
-}
-
-a.aCreateUser:visited {
-	color: #c4bba5;
-}
-
-a.aCreateUser:hover {
-	color: #a0cc95;
 }
 
 .panel-footer a {
@@ -92,6 +49,7 @@ a.aCreateUser:hover {
 	background-color: #C6C9C4;
 }
 </style>
+
 
 
 </head>
@@ -139,7 +97,7 @@ a.aCreateUser:hover {
 		<c:when test="${not empty userList}">
 
 			<table class="table table-hover table-bordered">
-
+<thead>
 				<tr class="first-child" align="left">
 					<td>Name</td>
 					<td>Age</td>
@@ -148,6 +106,8 @@ a.aCreateUser:hover {
 					<td></td>
 					<td></td>
 				</tr>
+				</thead>
+			 <tbody id="myTable">
 				<c:forEach items="${userList}" var="user">
 					<tr>
 						<td>${user.name}</td>
@@ -160,6 +120,7 @@ a.aCreateUser:hover {
 						<td><a href="<c:url value='/delete-${user.email}-user' />">delete</a></td>
 					</tr>
 				</c:forEach>
+				</tbody>
 			</table>
 
 
@@ -205,12 +166,21 @@ a.aCreateUser:hover {
 			<c:param name="page" value="${page-1}" />
 			<c:param name="name" value="${searchedName}" />
 		</c:url>
+		
+		<c:url value="${link}" var="startFrom">
+			<c:param name="page" value="1" />
+			<c:param name="name" value="${searchedName}" />
+		</c:url>
 		<c:if test="${page > 1}">
+		    <a href='<c:out value="${startFrom}" />' class="pn next">&lt;&lt;</a>
 			<a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
+			
 		</c:if>
+ 
+  
 
 
-		<c:forEach begin="${begin}" end="${maxPages}" step="1" varStatus="i">
+		<c:forEach begin="${start}" end="${finish}" step="1" varStatus="i">
 
 			<c:choose>
 				<c:when test="${page == i.index}">
@@ -230,10 +200,17 @@ a.aCreateUser:hover {
 			<c:param name="page" value="${page + 1}" />
 			<c:param name="name" value="${searchedName}" />
 		</c:url>
+			<c:url value="${link}" var="end">
+			<c:param name="page" value="${maxPages}" />
+			<c:param name="name" value="${searchedName}" />
+		</c:url>
 		<c:if test="${page + 1 <= maxPages}">
 			<a href='<c:out value="${next}" />' class="pn next">Next</a>
+			<a href='<c:out value="${end}" />' class="pn next">&gt;&gt;</a>
 		</c:if>
 	</div>
+
+
 
 
 </body>

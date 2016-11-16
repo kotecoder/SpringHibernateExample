@@ -9,11 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>User Registration Form</title>
 
-<style>
-.error {
-	color: #ff0000;
-}
-</style>
+
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -24,6 +20,10 @@
 
 .panel-title {
 	color: #d1cbbc;
+}
+
+.error {
+	color: #ff0000;
 }
 </style>
 
@@ -59,7 +59,7 @@
 						</tr>
 
 						<tr>
-							<%-- <td><label for="joiningDate">Joining Date: </label> </td> --%>
+						
 							<td><form:input type="hidden" path="joiningDate"
 									id="joiningDate" /></td>
 							<td><form:errors path="joiningDate" cssClass="error" /></td>
@@ -85,7 +85,7 @@
 										<input type="submit" value="Update" />
 									</c:when>
 									<c:otherwise>
-										<input type="submit" value="Register" />
+										<input type="submit" value="Register"  />
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
