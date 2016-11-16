@@ -39,4 +39,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>database_creation.sql</name>
+			<type>1</type>
+			<location>C:/Users/User/Downloads/TestTask/database_creation.sql</location>
+		</link>
+	</linkedResources>
 </projectDescription>
