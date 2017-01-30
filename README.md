@@ -1,4 +1,7 @@
 # SpringHibernateExample
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6e7f74aaed944826a350381de96f2483)](https://www.codacy.com/app/kotecoder/SpringHibernateExample?utm_source=github.com&utm_medium=referral&utm_content=kotecoder/SpringHibernateExample&utm_campaign=badger)
+
 Это тестовое веб CRUD приложение для JavaRush.
 
 Стандартное crud приложение, которое отображает список всех юзеров в базе (с пейджингом). 
